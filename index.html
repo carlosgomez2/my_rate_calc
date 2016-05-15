@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="es" ng-app="calc">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <title>Freelance Calculator</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
+  <link rel="stylesheet" href="bootstrap.min.css">
+  <link rel="stylesheet" href="main.css">
+  <!-- <script type="text/javascript" src="angular.min.js"></script> -->
+  <script type="text/javascript" src="app.js"></script>
+</head>
+
+<body>
+
+	<header>
+    <nav class="navbar navbar-default">
+      <p class="navbar-brand brand-bold">Calculadora de Ingresos</p>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="#expenses">Gastos</a></li>
+        <li><a href="#salary">Resumen Gastos</a></li>
+        <li><a href="#proyect">Proyecto</a></li>
+      </ul>
+    </nav>
+	</header>
+
+  <div class="main-wrapper">
+
+    <h1 class="text-center">CALCULADORA DE INGRESOS</h1>
+
+    <hr />
+
+    <!-- Seccion de los Gastos -->
+    <section id="expenses" class="expenses" ng-controller="expenseCtrl">
+
+      <div class="section_wrapper">
+        <h2 class="steps">1. INGRESA AQUÍ TUS GASTOS</h2>
+        <!-- Info -->
+        <div class="panel panel-default info">
+          <!-- Default panel contents -->
+          <div class="panel-heading">Cifras Importantes</div>
+
+          <!-- Table -->
+          <table class="table text-center">
+            <tr>
+              <td>2640 hrs laborales (52 sem x 5 d x 11 hr/dia)</td>
+            </tr>
+            <tr>
+              <td>240 dias laborales (52 sem x 5 dias)</td>
+            </tr>
+            <tr>
+              <td>52 semanas</td>
+            </tr>
+            <tr>
+              <td>12 meses</td>
+            </tr>
+          </table>
+        </div>
+        <!-- Fin de tabla -->
+        <!-- Fin de Info -->
+
+        <!-- Tabla de gastos -->
+        <div class=" ">
+          <table class="table">
+            <thead>
+              <tr class="t_head active">
+                <td>Gastos</td>
+                <td>Año</td>
+                <td>Mes</td>
+                <td>Día</td>
+              </tr>
+            </thead>
+            <tr ng-repeat="expense in expenses">
+              <td>{{expense.gasto}}</td>
+              <td>{{expense.mes * 12 | currency}}</td>
+              <td>{{expense.mes | currency}}</td>
+              <td>{{expense.mes * 12 / 365 | currency}}</td>
+            </tr>
+            <tr class="t_head" >
+              <td>Gran total</td>
+              <td>{{expense.mes | currency}}</td>
+              <td>{{expense.mes | currency}}</td>
+              <td>{{expense.mes | currency}}</td>
+            </tr>
+          </table>
+        </div>
+        <!-- Fin de la tabla -->
+
+        <!-- Formulario con angular -->
+        <form class="center" ng-submit="addRow()">
+          <h4>Ingresa un gasto</h4>
+          <label>Descripción del gasto:</label>
+          <input type="text" placeholder="ej. Gasolina" class="form-control" ng-model="gasto">
+          <label class="label_margin">Costo mensual:</label>
+          <div class="input-group input_width">
+            <span class="input-group-addon">$</span>
+            <input type="text" placeholder="ej. 3200" class="form-control" ng-model="mes">
+            <span class="input-group-addon">.00</span>
+          </div>
+          <button type="submit" value="Submit" class="btn btn-primary button_margin">Añadir</button>
+        </form>
+        <!-- Fin del formulario -->
+      </div>
+    </section>
+    <!-- Fin de la seccion de los Gastos -->
+
+    <hr />
+
+    <!-- Seccion del Salario -->
+    <section id="salary" class="salary">
+      <div class="section_wrapper">
+        <h2 class="steps">2. RESUMEN DE GASTOS</h2>
+
+        <div class="salary-table">
+          <table class="table">
+            <thead class="t_head">
+              <tr>
+                <td>Ingreso</td>
+                <td>Año</td>
+                <td>Mes</td>
+                <td>Día</td>
+              </tr>
+            </thead>
+            <tr class="danger">
+              <td>Necesario:</td>
+              <td>$ 3435</td>
+              <td>$ 356</td>
+              <td>$ 67</td>
+            </tr>
+            <tr class="warning">
+              <td>Restante:</td>
+              <td>$ 6897</td>
+              <td>$ 721</td>
+              <td>$ 103</td>
+            </tr>
+            <tr class="success">
+              <td>Deseado:</td>
+              <td>$ 9000</td>
+              <td>$ 600</td>
+              <td>$ 250</td>
+            </tr>
+          </table>
+        </div>
+
+        <!-- Formulario con angular -->
+        <form>
+          <h4>¿Cuanto te gustaria ganar?</h4>
+          <label>Sueldo mensual:</label>
+          <div class="input-group month_salary">
+            <span class="input-group-addon">$</span>
+            <input type="text" placeholder="ej. 15000" class="form-control">
+            <span class="input-group-addon">.00</span>
+          </div>
+          <button type="submit" class="btn btn-primary button_margin">Desear</button>
+        </form>
+        <!-- Fin del formulario -->
+      </div>
+    </section>
+    <!-- Fin de la seccion del Salario -->
+
+    <hr />
+
+    <!-- Seccion del Proyecto -->
+    <section id="proyect" class="proyect">
+      <div class="section_wrapper">
+        <h2 class="steps">3. PROYECTO</h2>
+
+        <form>
+          <label>Duración del proyecto</label>
+          <div class="input-group proyect_input">
+            <input type="text" class="form-control" placeholder="ej. 12" aria-describedby="basic-addon2">
+            <span class="input-group-addon" id="basic-addon2">Días.</span>
+          </div>
+          <label class="label_margin">Porcentaje de ganancia</label>
+          <div class="input-group input_width">
+            <input type="text" class="form-control" placeholder="ej. 20%" aria-describedby="basic-addon2">
+            <span class="input-group-addon" id="basic-addon2">%</span>
+          </div>
+          <button type="submit" class="btn btn-primary button_margin">Cotizar</button>
+        </form>
+
+        <h3 class="text-center">Resultado</h3>
+        <br />
+        <div class="result well text-center">
+          <p>
+            El costo neto para realizar el proyecto es:
+            <em>
+              $ 18,500.00
+            </em>
+          </p>
+          <br />
+          <p>
+            Tu porcentaje de ganancia es:
+            <em>
+              $ 4,500.00
+            </em>
+          </p>
+          <br />
+          <p>
+          El costo total del proyecto es:
+            <em>
+              $ 23,000.00
+            </em>
+          </p>
+        </div>
+      </div>
+    </section>
+    <!-- Fin de la seccion del Proyecto -->
+
+  </div><!-- Fin del main-wrapper -->
+
+  <footer class="panel-footer text-center">
+    <strong>Carlos Gómez</strong> | &copy; 2016 Todos los derechos reservados
+  </footer>
+
+</body>
+</html>
