@@ -1,39 +1,33 @@
-.brand-bold
-	font-weight: 700
+section#expenses
+  background-color: orangered
 
-.expenses
-	max-width: 800px
-	width: 100%
-	margin: auto
-	padding-top: 2rem
+  // Flex style
+  display: flex
+  flex-direction: column
+  justify-content: center
+  align-items: center
 
-.section_wrapper
-	padding: 10px
+  .table-container
+    width: 500px
+    max-width: 800px
 
-.info
-	display: none !important // Ocultar información
-	margin: auto
-	display: table
-	margin-bottom: 3.5rem
+    @media (max-width: 435px)
+      width: 97%
+      max-width: 98.5%
 
-	.panel-heading
-		font-weight: 700
+  .expenses-input
+    margin-top: 2.5rem
+    width: 35%
 
-.t_head
-	font-weight: 700
+    @media (max-width: 435px)
+      width: 90%
 
-.center
-	margin: auto
+    .form_margin
+      margin-top: 1.5rem
 
-.label_margin, .button_margin
-	margin-top: 1.5rem 
+    .button
+      margin: 2rem 0 0 0
 
-.input_width
-	width: 185px
-
-.steps
-	margin-bottom: 3.5rem
-
-h4
-	font-weight: 700
-	margin: 4.5rem 0 2.5rem 0
+    .link-button
+      text-decoration: none
+      color: white

@@ -3,214 +3,118 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-  <title>Freelance Calculator</title>
-  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
+  <title>My Rate Calc</title>
+  <script type="text/javascript" src="angular.min.js"></script>
   <link rel="stylesheet" href="bootstrap.min.css">
   <link rel="stylesheet" href="main.css">
-  <!-- <script type="text/javascript" src="angular.min.js"></script> -->
   <script type="text/javascript" src="app.js"></script>
 </head>
 
 <body>
 
-	<header>
+  <header>
     <nav class="navbar navbar-default">
-      <p class="navbar-brand brand-bold">Calculadora de Ingresos</p>
-      <ul class="nav navbar-nav navbar-right">
-        <li><a href="#expenses">Gastos</a></li>
-        <li><a href="#salary">Resumen Gastos</a></li>
-        <li><a href="#proyect">Proyecto</a></li>
-      </ul>
+      <p class="navbar-brand">My Rate Calc</p>
     </nav>
-	</header>
+  </header>
 
-  <div class="main-wrapper">
+  <section id="start">
+    <!-- Above the fold -->
+    <div class="welcome">
+      <h2>Calcula tus ingresos con esta app...</h2>
+      <h3>...olvida el cobrar por hora, cobra según tus gastos.</h3>
+      <p><a href="#data1" class="btn btn-warning btn-lg"> <b>Calcular</b> </a></p>
+    </div>
+  </section>
 
-    <h1 class="text-center">CALCULADORA DE INGRESOS</h1>
+  <section id="data1">
+    <!-- User data, salary and pretentions -->
+    <div class="data1">
+    <h2 class="text-center">Responde las preguntas:</h2>
+    <form class="questions">
 
-    <hr />
-
-    <!-- Seccion de los Gastos -->
-    <section id="expenses" class="expenses" ng-controller="expenseCtrl">
-
-      <div class="section_wrapper">
-        <h2 class="steps">1. INGRESA AQUÍ TUS GASTOS</h2>
-        <!-- Info -->
-        <div class="panel panel-default info">
-          <!-- Default panel contents -->
-          <div class="panel-heading">Cifras Importantes</div>
-
-          <!-- Table -->
-          <table class="table text-center">
-            <tr>
-              <td>2640 hrs laborales (52 sem x 5 d x 11 hr/dia)</td>
-            </tr>
-            <tr>
-              <td>240 dias laborales (52 sem x 5 dias)</td>
-            </tr>
-            <tr>
-              <td>52 semanas</td>
-            </tr>
-            <tr>
-              <td>12 meses</td>
-            </tr>
-          </table>
-        </div>
-        <!-- Fin de tabla -->
-        <!-- Fin de Info -->
-
-        <!-- Tabla de gastos -->
-        <div class=" ">
-          <table class="table">
-            <thead>
-              <tr class="t_head active">
-                <td>Gastos</td>
-                <td>Año</td>
-                <td>Mes</td>
-                <td>Día</td>
-              </tr>
-            </thead>
-            <tr ng-repeat="expense in expenses">
-              <td>{{expense.gasto}}</td>
-              <td>{{expense.mes * 12 | currency}}</td>
-              <td>{{expense.mes | currency}}</td>
-              <td>{{expense.mes * 12 / 365 | currency}}</td>
-            </tr>
-            <tr class="t_head" >
-              <td>Gran total</td>
-              <td>{{expense.mes | currency}}</td>
-              <td>{{expense.mes | currency}}</td>
-              <td>{{expense.mes | currency}}</td>
-            </tr>
-          </table>
-        </div>
-        <!-- Fin de la tabla -->
-
-        <!-- Formulario con angular -->
-        <form class="center" ng-submit="addRow()">
-          <h4>Ingresa un gasto</h4>
-          <label>Descripción del gasto:</label>
-          <input type="text" placeholder="ej. Gasolina" class="form-control" ng-model="gasto">
-          <label class="label_margin">Costo mensual:</label>
-          <div class="input-group input_width">
-            <span class="input-group-addon">$</span>
-            <input type="text" placeholder="ej. 3200" class="form-control" ng-model="mes">
-            <span class="input-group-addon">.00</span>
-          </div>
-          <button type="submit" value="Submit" class="btn btn-primary button_margin">Añadir</button>
-        </form>
-        <!-- Fin del formulario -->
+      <div class="question">
+        <label>¿Cuanto Ganas al Mes?</label>
+        <input type="text" placeholder="ej. 3200" class="form-control">
       </div>
-    </section>
-    <!-- Fin de la seccion de los Gastos -->
 
-    <hr />
-
-    <!-- Seccion del Salario -->
-    <section id="salary" class="salary">
-      <div class="section_wrapper">
-        <h2 class="steps">2. RESUMEN DE GASTOS</h2>
-
-        <div class="salary-table">
-          <table class="table">
-            <thead class="t_head">
-              <tr>
-                <td>Ingreso</td>
-                <td>Año</td>
-                <td>Mes</td>
-                <td>Día</td>
-              </tr>
-            </thead>
-            <tr class="danger">
-              <td>Necesario:</td>
-              <td>$ 3435</td>
-              <td>$ 356</td>
-              <td>$ 67</td>
-            </tr>
-            <tr class="warning">
-              <td>Restante:</td>
-              <td>$ 6897</td>
-              <td>$ 721</td>
-              <td>$ 103</td>
-            </tr>
-            <tr class="success">
-              <td>Deseado:</td>
-              <td>$ 9000</td>
-              <td>$ 600</td>
-              <td>$ 250</td>
-            </tr>
-          </table>
-        </div>
-
-        <!-- Formulario con angular -->
-        <form>
-          <h4>¿Cuanto te gustaria ganar?</h4>
-          <label>Sueldo mensual:</label>
-          <div class="input-group month_salary">
-            <span class="input-group-addon">$</span>
-            <input type="text" placeholder="ej. 15000" class="form-control">
-            <span class="input-group-addon">.00</span>
-          </div>
-          <button type="submit" class="btn btn-primary button_margin">Desear</button>
-        </form>
-        <!-- Fin del formulario -->
+      <div class="question">
+        <label>¿Cuanto deseas ahorrar al Año?</label>
+        <input type="text" placeholder="ej. 25000" class="form-control">
       </div>
-    </section>
-    <!-- Fin de la seccion del Salario -->
-
-    <hr />
-
-    <!-- Seccion del Proyecto -->
-    <section id="proyect" class="proyect">
-      <div class="section_wrapper">
-        <h2 class="steps">3. PROYECTO</h2>
-
-        <form>
-          <label>Duración del proyecto</label>
-          <div class="input-group proyect_input">
-            <input type="text" class="form-control" placeholder="ej. 12" aria-describedby="basic-addon2">
-            <span class="input-group-addon" id="basic-addon2">Días.</span>
-          </div>
-          <label class="label_margin">Porcentaje de ganancia</label>
-          <div class="input-group input_width">
-            <input type="text" class="form-control" placeholder="ej. 20%" aria-describedby="basic-addon2">
-            <span class="input-group-addon" id="basic-addon2">%</span>
-          </div>
-          <button type="submit" class="btn btn-primary button_margin">Cotizar</button>
-        </form>
-
-        <h3 class="text-center">Resultado</h3>
-        <br />
-        <div class="result well text-center">
-          <p>
-            El costo neto para realizar el proyecto es:
-            <em>
-              $ 18,500.00
-            </em>
-          </p>
-          <br />
-          <p>
-            Tu porcentaje de ganancia es:
-            <em>
-              $ 4,500.00
-            </em>
-          </p>
-          <br />
-          <p>
-          El costo total del proyecto es:
-            <em>
-              $ 23,000.00
-            </em>
-          </p>
-        </div>
+      <div class="text-center button">
+        <button type="submit" value="Submit" class="btn btn-primary margin-top">Ingresar</button>
+        <a href="#expenses" class="btn btn-success margin-top link-button">Siguiente</a>
       </div>
-    </section>
-    <!-- Fin de la seccion del Proyecto -->
+    </form>
+    </div>
+  </section>
 
-  </div><!-- Fin del main-wrapper -->
+  <section id="expenses">
+    <!-- User expenses table -->
+    <div class="table-container text-center">
+      <table class="table">
+        <thead>
+          <tr class="t_head active">
+            <td>Gastos al:</td>
+            <td>Año</td>
+            <td>Mes</td>
+            <td>Día</td>
+          </tr>
+        </thead>
+        <tr ng-repeat="expense in expenses">
+          <td>{{expense.gasto}}</td>
+          <td>{{expense.mes * 12 | currency}}</td>
+          <td>{{expense.mes | currency}}</td>
+          <td>{{expense.mes * 12 / 365 | currency}}</td>
+        </tr>
+      </table>
+    </div>
+    <!-- Fin de la tabla -->
 
-  <footer class="panel-footer text-center">
-    <strong>Carlos Gómez</strong> | &copy; 2016 Todos los derechos reservados
+    <!-- Formulario con angular -->
+    <form class="expenses-input" ng-submit="addRow()">
+      <h2 class="text-center">Ingresa un gasto</h2>
+      <label>Descripción del gasto:</label>
+      <input type="text" placeholder="ej. Gasolina" class="form-control" ng-model="gasto">
+      <label class="form_margin">Costo mensual:</label>
+      <div class="input-group">
+        <span class="input-group-addon">$</span>
+        <input type="text" placeholder="ej. 3200" class="form-control" ng-model="mes">
+        <span class="input-group-addon">.00</span>
+      </div>
+      <div class="text-center">
+        <button type="submit" value="Submit" class="btn btn-primary form_margin button">Añadir</button>
+        <a href="#report1" class="btn btn-success button link-button">Siguiente</a>
+      </div>
+    </form>
+    <!-- Fin del formulario -->
+
+  </section>
+
+  <section id="report1">
+    <!-- Results -->
+    <div class="project">
+      <div class="project-text">
+        <h3 class="text-center">
+          ¿Quieres saber que costo tiene un proyecto?
+        </h3>
+        <a href="#data2" class="btn btn-info btn-lg link-button">Calcular</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="data2">
+    <!-- Data for calculate rate project -->
+
+  </section>
+
+  <section id="report2">
+    <!-- Results of project cost -->
+  </section>
+
+  <footer>
+
   </footer>
 
 </body>
