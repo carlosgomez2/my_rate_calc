@@ -5,8 +5,8 @@
   <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
   <title>My Rate Calc</title>
   <script type="text/javascript" src="angular.min.js"></script>
-  <link rel="stylesheet" href="bootstrap.min.css">
-  <link rel="stylesheet" href="main.css">
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/main.css">
   <script type="text/javascript" src="app.js"></script>
 </head>
 
@@ -21,6 +21,7 @@
   <section id="start">
     <!-- Above the fold -->
     <div class="welcome">
+      <h1>My Rate Calc</h1>
       <h2>Calcula tus ingresos con esta app...</h2>
       <h3>...olvida el cobrar por hora, cobra según tus gastos.</h3>
       <p><a href="#data1" class="btn btn-warning btn-lg"> <b>Calcular</b> </a></p>
@@ -99,22 +100,47 @@
         <h3 class="text-center">
           ¿Quieres saber que costo tiene un proyecto?
         </h3>
-        <a href="#data2" class="btn btn-info btn-lg link-button">Calcular</a>
+        <a href="#data2" class="btn btn-warning btn-lg link-button">Calcular</a>
       </div>
     </div>
   </section>
 
   <section id="data2">
     <!-- Data for calculate rate project -->
+    <div class="data2">
+    <h2 class="text-center">Responde las preguntas:</h2>
+    <form class="questions">
 
+      <div class="question">
+        <label>¿Cuantos días dura el proyecto?</label>
+        <input type="text" placeholder="ej. 5" class="form-control">
+      </div>
+
+      <div class="question form_margin">
+        <label>¿Que porcentaje quieres ganar?</label>
+        <input type="text" placeholder="ej. 20%" class="form-control" >
+      <div class="text-center button">
+        <button type="submit" value="Submit" class="btn btn-primary margin-top form_margin">Ingresar</button>
+        <a href="#report2" class="btn btn-success margin-top link-button form_margin">Siguiente</a>
+      </div>
+    </form>
+    </div>
   </section>
 
   <section id="report2">
     <!-- Results of project cost -->
+    <div class="text-center">
+      <h2>Costo estimado del proyecto</h2>
+      <div class="cost">
+        <h4>Costo para realizarlo:</h4><h3>$ {{ costo }}</h3>
+        <h4>Porcentaje de ganancia:</h4><h3>$ {{ costo }}</h3>
+        <h4>Costo total del proyecto:</h4><h3>$ {{ costo }}</h3>
+      </div>
+    </div>
   </section>
 
-  <footer>
-
+  <footer class="text-center">
+    <h6>Carlos Gómez 2016 &copy; | Made with passion </h6>
   </footer>
 
 </body>

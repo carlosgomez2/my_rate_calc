@@ -1,5 +1,6 @@
 section#report1
-  background: tomato
+  background: $oscuro
+  color: white
 
   // Flex style
   display: flex
@@ -8,7 +9,7 @@ section#report1
 
 .project
   width: 100%
-  background-color: springgreen
+  background-color: $teal
   bottom: 0
   left: 0
   color: white
@@ -27,10 +28,14 @@ section#report1
     justify-content: space-around
 
     h3
-      align-self: center
+      align-self: baseline
       line-height: 1.5em
       font-size: 1.6em
 
     .link-button
       text-decoration: none
       color: white
+      font-weight: bolder
+
+      @media (max-width: 667px)
+        margin-top: 1.5rem
